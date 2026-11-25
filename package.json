@@ -1,0 +1,52 @@
+{
+  "name": "ds-zara",
+  "version": "0.1.0",
+  "private": true,
+  "description": "DS-Zara: design system editorial monocromático (React + Tailwind v4 + Storybook), com fundações medidas em zara.com/pt.",
+  "type": "module",
+  "sideEffects": ["**/*.css"],
+  "main": "./dist/lib/index.js",
+  "module": "./dist/lib/index.js",
+  "types": "./dist/lib/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/lib/index.d.ts",
+      "import": "./dist/lib/index.js"
+    },
+    "./theme.css": "./src/styles/theme.css",
+    "./styles.css": "./dist/lib/ds-zara.css",
+    "./tokens.json": "./tokens/tokens.json"
+  },
+  "files": ["dist/lib", "src/styles", "tokens"],
+  "scripts": {
+    "dev": "storybook dev -p 6016 --ci --config-dir .storybook",
+    "build": "vite build && tsc -p tsconfig.build.json",
+    "build:tokens": "node scripts/build-tokens.mjs",
+    "build-storybook": "storybook build --config-dir .storybook -o storybook-static",
+    "typecheck": "tsc --noEmit"
+  },
+  "peerDependencies": {
+    "react": ">=18",
+    "react-dom": ">=18"
+  },
+  "dependencies": {
+    "class-variance-authority": "^0.7.1",
+    "clsx": "^2.1.1",
+    "tailwind-merge": "^3.7.0"
+  },
+  "devDependencies": {
+    "@storybook/addon-a11y": "^10.6.7",
+    "@storybook/addon-docs": "^10.6.7",
+    "@storybook/react-vite": "^10.6.7",
+    "@tailwindcss/vite": "^4.3.5",
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
+    "@vitejs/plugin-react": "^6.3.0",
+    "react": "^19.3.1",
+    "react-dom": "^19.3.1",
+    "storybook": "^10.6.7",
+    "tailwindcss": "^4.3.5",
+    "typescript": "^5.9.0",
+    "vite": "^8.3.8"
+  }
+}

@@ -1,0 +1,39 @@
+import { Meta } from "@storybook/addon-docs/blocks";
+
+<Meta title="Introdução" />
+
+# DS-Zara
+
+Design system editorial e monocromático. A linguagem visual foi medida no DOM de **zara.com/pt** (19/11/2026, 1440px e mobile): cor, tipo, espaço, botões, campos, grelha, cabeçalho e movimento. O DS reproduz a **linguagem**, não a identidade: sem logotipo, fotos, textos ou fonte proprietária da marca.
+
+## Princípios
+
+1. **A imagem é a cor.** Interface em preto, branco e cinza; a fotografia carrega a cor. Vermelho só para erro.
+2. **Linha, não volume.** Raio 0, sem sombra, contornos de 1px. Campos são uma linha inferior.
+3. **Voz baixa.** Peso 300 em quase tudo, escala densa (13px base), maiúsculas em ações e rótulos.
+4. **Espaço como estrutura.** Margens largas e calha de 40px organizam a página no lugar de caixas.
+5. **Acessível por padrão.** Contraste AA garantido nos tokens, foco visível de 1px, teclado e ARIA em todo componente interativo.
+
+## Camadas
+
+| Camada | Arquivo | Papel |
+|---|---|---|
+| Tokens | `tokens/tokens.json` | Fonte canônica (W3C DTCG) |
+| Tema | `src/styles/theme.css` | Primitivas → semânticas por tema → `@theme` do Tailwind v4 |
+| Utilitários | `src/lib/cn.ts` | `cn()` e `focusRing` |
+| Componentes | `src/components/{actions,form,nav,content}` | React 19 + `cva` |
+
+## Uso
+
+```tsx
+import "ds-zara/styles.css";          // sem Tailwind no app
+import { Button, ProductCard } from "ds-zara";
+
+<div data-theme="light">
+  <Button variant="primary">Adicionar</Button>
+</div>
+```
+
+Com Tailwind v4 no app: importe `ds-zara/theme.css` e adicione `@source "../node_modules/ds-zara/dist/lib";`.
+
+Regras de contribuição em `GOVERNANCA.md`; contrato para quem escreve componente em `CONTRATO.md`.

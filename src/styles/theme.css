@@ -1,0 +1,180 @@
+/*
+ * DS-Zara: tema. Espelha tokens/tokens.json.
+ * Camadas: primitivas (:root) -> semânticas por tema ([data-theme]) -> @theme (Tailwind v4).
+ */
+@import "tailwindcss";
+
+:root {
+  --zr-black: #000000;
+  --zr-white: #ffffff;
+  --zr-gray-005: #f2f2f2;
+  --zr-gray-010: #e5e5e5;
+  --zr-gray-020: #cccccc;
+  --zr-gray-040: #999999;
+  --zr-gray-055: #797979;
+  --zr-gray-058: #6b6b6b;
+  --zr-gray-060: #666666;
+  --zr-gray-080: #333333;
+  --zr-gray-085: #262626;
+  --zr-gray-092: #141414;
+  --zr-gray-dark-mid: #929292;
+  --zr-red: #ff0d0d;
+  --zr-red-text: #d40000;
+  --zr-red-text-dark: #ff5c5c;
+}
+
+:root,
+[data-theme="light"] {
+  color-scheme: light;
+  --zr-base: var(--zr-white);
+  --zr-surface: var(--zr-white);
+  --zr-muted: var(--zr-gray-005);
+  --zr-content: var(--zr-black);
+  --zr-content-mid: var(--zr-gray-060);
+  --zr-content-low: var(--zr-gray-058);
+  --zr-content-disabled: var(--zr-gray-040);
+  --zr-line: var(--zr-black);
+  --zr-line-subtle: var(--zr-gray-010);
+  --zr-line-field: var(--zr-gray-055);
+  --zr-inverse: var(--zr-black);
+  --zr-on-inverse: var(--zr-white);
+  --zr-inverse-hover: var(--zr-gray-080);
+  --zr-danger: var(--zr-red);
+  --zr-danger-text: var(--zr-red-text);
+  --zr-overlay: rgb(0 0 0 / 0.5);
+}
+
+[data-theme="dark"] {
+  color-scheme: dark;
+  --zr-base: var(--zr-black);
+  --zr-surface: var(--zr-gray-092);
+  --zr-muted: var(--zr-gray-085);
+  --zr-content: var(--zr-white);
+  --zr-content-mid: var(--zr-gray-dark-mid);
+  --zr-content-low: var(--zr-gray-dark-mid);
+  --zr-content-disabled: var(--zr-gray-060);
+  --zr-line: var(--zr-white);
+  --zr-line-subtle: var(--zr-gray-085);
+  --zr-line-field: var(--zr-gray-dark-mid);
+  --zr-inverse: var(--zr-white);
+  --zr-on-inverse: var(--zr-black);
+  --zr-inverse-hover: var(--zr-gray-020);
+  --zr-danger: var(--zr-red);
+  --zr-danger-text: var(--zr-red-text-dark);
+  --zr-overlay: rgb(0 0 0 / 0.75);
+}
+
+/* Cores trocam por tema: precisam de `inline` para não congelarem no build. */
+@theme inline {
+  --color-*: initial;
+  --color-transparent: transparent;
+  --color-current: currentColor;
+  --color-base: var(--zr-base);
+  --color-surface: var(--zr-surface);
+  --color-muted: var(--zr-muted);
+  --color-content: var(--zr-content);
+  --color-content-mid: var(--zr-content-mid);
+  --color-content-low: var(--zr-content-low);
+  --color-content-disabled: var(--zr-content-disabled);
+  --color-line: var(--zr-line);
+  --color-line-subtle: var(--zr-line-subtle);
+  --color-line-field: var(--zr-line-field);
+  --color-inverse: var(--zr-inverse);
+  --color-on-inverse: var(--zr-on-inverse);
+  --color-inverse-hover: var(--zr-inverse-hover);
+  --color-danger: var(--zr-danger);
+  --color-danger-text: var(--zr-danger-text);
+  --color-overlay: var(--zr-overlay);
+}
+
+@theme {
+  --font-sans: "Helvetica Neue", Helvetica, Arial, sans-serif;
+
+  --text-*: initial;
+  --text-caption: 10px;
+  --text-caption--line-height: 16px;
+  --text-label-s: 11px;
+  --text-label-s--line-height: 16px;
+  --text-label: 12px;
+  --text-label--line-height: 16px;
+  --text-action: 13px;
+  --text-action--line-height: 16px;
+  --text-body: 13px;
+  --text-body--line-height: 20px;
+  --text-title-s: 15px;
+  --text-title-s--line-height: 24px;
+  --text-title: 16px;
+  --text-title--line-height: 24px;
+  --text-heading: 20px;
+  --text-heading--line-height: 24px;
+  --text-display: 24px;
+  --text-display--line-height: 28px;
+
+  --radius-*: initial;
+  --radius-none: 0px;
+  --radius-full: 9999px;
+
+  --shadow-*: initial;
+
+  --breakpoint-md: 768px;
+  --breakpoint-lg: 1024px;
+  --breakpoint-xl: 1280px;
+  --breakpoint-2xl: 1920px;
+
+  --ease-zr: ease-in-out;
+
+  --z-index-overlay: 1200;
+  --z-index-toast: 1300;
+
+  --animate-zr-fade-in: zr-fade-in 200ms ease-in-out both;
+  --animate-zr-slide-up: zr-slide-up 500ms ease-in-out both;
+  --animate-zr-pulse: zr-pulse 1.6s ease-in-out infinite;
+
+  @keyframes zr-fade-in {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  @keyframes zr-slide-up {
+    from {
+      opacity: 0;
+      transform: translateY(8px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  @keyframes zr-pulse {
+    0%,
+    100% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0.5;
+    }
+  }
+}
+
+@layer base {
+  html {
+    font-family: var(--font-sans);
+    font-weight: 300;
+    -webkit-font-smoothing: antialiased;
+  }
+  body {
+    background: var(--zr-base);
+    color: var(--zr-content);
+  }
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+}
